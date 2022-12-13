@@ -1,0 +1,39 @@
+In IDLE’s interactive window, type the following to import urlopen():
+
+>>> from urllib.request import urlopen
+The web page that you’ll open is at the following URL:
+
+>>> url = "http://olympus.realpython.org/profiles/aphrodite"
+To open the web page, pass url to urlopen():
+
+>>> page = urlopen(url)
+urlopen() returns an HTTPResponse object:
+
+>>> page
+<http.client.HTTPResponse object at 0x105fef820>
+To extract the HTML from the page, first use the HTTPResponse object’s .read() method, which returns a sequence of bytes. Then use .decode() to decode the bytes to a string using UTF-8:
+
+>>> html_bytes = page.read()
+>>> html = html_bytes.decode("utf-8")
+Now you can print the HTML to see the contents of the web page:
+
+>>> print(html)
+<html>
+<head>
+<title>Profile: Aphrodite</title>
+</head>
+<body bgcolor="yellow">
+<center>
+<br><br>
+<img src="/static/aphrodite.gif" />
+<h2>Name: Aphrodite</h2>
+<br><br>
+Favorite animal: Dove
+<br><br>
+Favorite color: Red
+<br><br>
+Hometown: Mount Olympus
+</center>
+</body>
+</html>
+The output that you’re seeing is the HTML code of the website, which your browser renders when you visit http://olympus.realpython.org/profiles/aphrodite:
